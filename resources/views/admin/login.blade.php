@@ -37,10 +37,11 @@
                             </div>
                         </div>
 
-                        @error('email')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
+                        
                     </div>
+                    @error('email')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
 
                     <div class="input-group mb-3">
                         <input type="password" name="password"

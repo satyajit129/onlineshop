@@ -11,6 +11,11 @@
 		<!-- Theme style -->
 		<link rel="stylesheet" href="{{  asset('admin_assets/css/adminlte.min.css')  }}">
 		<link rel="stylesheet" href="{{ asset('admin_assets/css/custom.css') }}">
+		
+		@yield('style')
+
+		<meta name="csrf-token" content="{{ csrf_token() }}">
+
 	</head>
 	<body class="hold-transition sidebar-mini">
 		<!-- Site wrapper -->
@@ -80,5 +85,7 @@
         <script src="{{ asset('admin_assets/js/adminlte.min.js') }}"></script>
 		<!-- AdminLTE for demo purposes -->
 		<script src="js/demo.js"></script>
+
+		@yield('jsfile')
 	</body>
 </html>
