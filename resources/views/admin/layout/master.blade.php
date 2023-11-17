@@ -73,7 +73,7 @@
 			<!-- /.content-wrapper -->
 			<footer class="main-footer">
 				
-				<strong>Copyright &copy; 2014-2022 AmazingShop All rights reserved.
+				<strong>Copyright &copy; 2022-2023 Satyajit Roy All rights reserved.
 			</footer>
 			
 		</div>
