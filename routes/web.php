@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AdminLoginController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\HomeController;
+use App\Http\Controllers\admin\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,6 +40,15 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
             Route::post('/update/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
             Route::get('/destroy/{id}', [CategoryController::class, 'destroy'])->name('admin.category.destroy');
+        });
+        // subcategory routr
+        Route::group(['prefix' => 'subcategory'], function () {
+            Route::get('/index', [SubCategoryController::class, 'index'])->name('admin.subcategory.index');
+            Route::get('/create', [SubCategoryController::class, 'create'])->name('admin.subcategory.create');
+            Route::post('/store', [SubCategoryController::class, 'store'])->name('admin.subcategory.store');
+            Route::get('/edit/{id}', [SubCategoryController::class, 'edit'])->name('admin.subcategory.edit');
+            Route::post('/update/{id}', [SubCategoryController::class, 'update'])->name('admin.subcategory.update');
+            Route::get('/destroy/{id}', [SubCategoryController::class, 'destroy'])->name('admin.subcategory.destroy');
         });
     });
 });

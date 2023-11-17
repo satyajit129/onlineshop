@@ -14,7 +14,7 @@ class CategoryController extends Controller
         if(!empty($request->get("keyword"))){
             $categories = $categories->where("name","like","%".$request->get("keyword")."%");
         }
-        $categories = $categories->latest()->get();
+        $categories = $categories->paginate(6);
         return view("admin.category.index",compact("categories"));
     }
     public function create(){

@@ -1,14 +1,14 @@
 @extends('admin.layout.master')
 @section('content')
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+    <section class="content-header">					
         <div class="container-fluid my-2">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Categories</h1>
+                    <h1>Sub Category</h1>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a href="{{ route('admin.category.create') }}" class="btn btn-primary">New Category</a>
+                    <a href="{{ route('admin.subcategory.create') }}" class="btn btn-primary">New Sub Category</a>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
                 <form action="" method="get">
                     <div class="card-header">
                         <div class="card-title">
-                            <a href="{{ route('admin.category.index') }}" class="btn btn-default btn-sm">Reset</a>
+                            <a href="{{ route('admin.subcategory.index') }}" class="btn btn-default btn-sm">Reset</a>
                         </div>
                         <div class="card-tools">
                             <div class="input-group input-group" style="width: 250px;">
@@ -46,6 +46,7 @@
                             <th class="text-center">SL</th>
 
                             <th class="text-center">Name</th>
+                            <th class="text-center">Category</th>
                             <th class="text-center">Slug</th>
                             <th class="text-center" width="100">Status</th>
                             <th class="text-center"width="100">Action</th>
@@ -55,14 +56,15 @@
                         $sl = 1;
                     @endphp
                     <tbody>
-                        @if ($categories->isNotEmpty())
-                            @foreach ($categories as $index => $category)
+                        @if ($subcategories->isNotEmpty())
+                            @foreach ($subcategories as $index => $subcategory)
                                 <tr>
                                     <td class="text-center">{{ $sl++ }}</td>
-                                    <td class="text-center">{{ $category->name }}</td>
-                                    <td class="text-center">{{ $category->slug }}</td>
+                                    <td class="text-center">{{ $subcategory->name }}</td>
+                                    <td class="text-center">{{ $subcategory->category->name }}</td>
+                                    <td class="text-center">{{ $subcategory->slug }}</td>
                                     <td class="text-center">
-                                        @if ($category->status == 1)
+                                        @if ($subcategory->status == 1)
                                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25"
                                                 height="25" viewBox="0 0 24 24">
                                                 <path
@@ -81,7 +83,7 @@
 
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{ route('admin.category.edit', $category->id) }}">
+                                        <a href="{{ route('admin.subcategory.edit', $subcategory->id) }}">
                                             <svg class="filament-link-icon w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                 <path
@@ -90,7 +92,7 @@
                                             </svg>
                                         </a>
                                         <a href="#" class="text-danger w-4 h-4 mr-1"
-                                            onclick="confirmDelete('{{ route('admin.category.destroy', $category->id) }}')">
+                                            onclick="confirmDelete('{{ route('admin.subcategory.destroy', $subcategory->id) }}')">
                                             <svg wire:loading.remove.delay="" wire:target=""
                                                 class="filament-link-icon w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -112,7 +114,7 @@
                 </table>
             </div>
             <div class="card-footer clearfix">
-                {{ $categories->links() }}
+                {{ $subcategories->links() }}
                 {{-- <ul class="pagination pagination m-0 float-right">
                         <li class="page-item"><a class="page-link" href="#">«</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
