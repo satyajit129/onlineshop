@@ -22,7 +22,7 @@
     <section class="content">
         <!-- Default box -->
         <div class="container-fluid">
-            <form action="{{ route('admin.subcategory.update',$subcategory->id) }}" method="post">
+            <form action="{{ route('admin.subcategory.update', $subcategory->id) }}" method="post">
                 @csrf
                 <div class="card">
                     <div class="card-body">
@@ -30,15 +30,20 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="name">Name</label>
-                                    <input  value="{{ old('name',$subcategory->name) }}" type="text" name="name" id="name" class="form-control"
+                                    <input value="{{ old('name', $subcategory->name) }}" type="text" name="name"
+                                        id="name" class="form-control @error('name') is-invalid @enderror"
                                         placeholder="Name">
                                 </div>
+                                @error('name')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             </div>
+
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="name">Category</label>
+                                    <label for="category">Category</label>
 
-                                    <select name="category" id="category" class="form-control">
+                                    <select name="category" id="category" class="form-control @error('category') is-invalid @enderror ">
                                         <option value="" selected disabled>Select one</option>
 
                                         @if ($categories->isNotEmpty())
@@ -51,24 +56,35 @@
                                     </select>
 
                                 </div>
+                                @error('category')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="status">Statue</label>
-                                    <select name="status" id="status" class="form-control">
+                                    <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
                                         <option disabled selected>Select One</option>
                                         <option value="1">Active</option>
                                         <option value="0">Block</option>
                                     </select>
                                 </div>
+                                @error('status')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="slug">Slug</label>
-                                    <input value="{{ old('slug',$subcategory->slug) }}" type="text" name="slug" id="slug" class="form-control"
+                                    <input value="{{ old('slug', $subcategory->slug) }}" type="text" name="slug"
+                                        id="slug" class="form-control @error('slug') is-invalid @enderror"
                                         placeholder="Slug" readonly>
                                 </div>
+                                @error('slug')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             </div>
+
 
                         </div>
                     </div>

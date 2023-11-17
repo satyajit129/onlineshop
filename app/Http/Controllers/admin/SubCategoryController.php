@@ -9,13 +9,18 @@ use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         $subcategories = SubCategory::latest();
-        if(!empty($request->get("keyword"))){
-            $subcategories = $subcategories->where("name","like","%".$request->get("keyword")."%");
+    
+        // Check for keyword search
+        if (!empty($request->get("keyword"))) {
+            $subcategories = $subcategories->where("name", "like", "%" . $request->get("keyword") . "%")
+                ->orWhere("slug", "like", "%" . $request->get("keyword") . "%");
         }
+    
         $subcategories = $subcategories->paginate(6);
-        return view("admin.subcategory.index",compact("subcategories"));
+        return view("admin.subcategory.index", compact("subcategories"));
     }
     public function create(){
         $categories = Category::orderBy('name','ASC')->get();

@@ -30,15 +30,19 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="name">Name</label>
-                                    <input type="text" name="name" id="name" class="form-control"
-                                        placeholder="Name">
+                                    <input type="text" name="name" id="name"
+                                        class="form-control @error('name') is-invalid @enderror" placeholder="Name">
                                 </div>
+                                @error('name')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
+
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="name">Category</label>
 
-                                    <select name="category" id="category" class="form-control">
+                                    <select name="category" id="category" class="form-control @error('category') is-invalid @enderror">
                                         <option value="" selected disabled>Select one</option>
 
                                         @if ($categories->isNotEmpty())
@@ -51,24 +55,35 @@
                                     </select>
 
                                 </div>
+                                @error('category')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="status">Statue</label>
-                                    <select name="status" id="status" class="form-control">
+                                    <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
                                         <option disabled selected>Select One</option>
                                         <option value="1">Active</option>
                                         <option value="0">Block</option>
                                     </select>
                                 </div>
+                                @error('status')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="slug">Slug</label>
-                                    <input type="text" name="slug" id="slug" class="form-control"
-                                        placeholder="Slug" readonly>
+                                    <input type="text" name="slug" id="slug"
+                                        class="form-control @error('slug') is-invalid @enderror" placeholder="Slug"
+                                        readonly>
                                 </div>
+                                @error('slug')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
+
 
                         </div>
                     </div>
